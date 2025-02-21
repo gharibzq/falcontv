@@ -1,1 +1,24 @@
+{
+  "category": {
+    "id": "1",
+    "name": "الدوري المحلي"
+  },
+  "channels": [
+    {
+      "id": "bein1720",
+      "name": "قناة 1",
+      "image": "https://i.imgur.com/Y57tqVA.png"
+    },
+    {
+      "id": "bein11080",
+      "name": "قناة 2",
+      "image": "https://i.imgur.com/Y57tqVA.png"
+    },
+    {
+      "id": "channel3",
+      "name": "قناة 3",
+      "image": "https://i.imgur.com/Y57tqVA.png"
+    }
+  ]
+}
 
