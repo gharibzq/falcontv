@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falcon TV</title>
+  <!-- استيراد أيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+     html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      /* خلفية متدرجة جديدة */
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #FFFFFF;
+      text-align: center;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    /* الهيدر */
+    .header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 20px; /* زيادة التباعد */
+      /* تغيير الخلفية إلى متدرجة */
+      background: linear-gradient(135deg, #203a43, #2c5364);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      height: 40px; /* زيادة ارتفاع الهيدر */
+    }
+    /* عنوان الهيدر */
+    .header h1 {
+      font-size: 2.2em; /* تكبير الخط */
+      /* تغيير لون النص من الأصفر إلى اللون الأساسي */
+      color: #ff6f61;
+      margin: 0;
+    }
+    /* أيقونة القائمة */
+    .header .menu-icon {
+      position: absolute;
+      left: 20px;
+      font-size: 1.8em; /* تكبير الأيقونة */
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    /* المحتوى الرئيسي */
+    .content {
+      padding: 20px;
+    }
+    /* تعديل صورة الشعار لتظهر بنمط الدائرة كما في القائمة الجانبية */
+    .logo {
+      margin: 20px auto;
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      /* تغيير لون الحدود إلى اللون الأساسي */
+      border: 2px solid #ff6f61;
+      padding: 5px;
+      /* تغيير الخلفية إلى لون يتماشى مع الخلفيات الجديدة */
+      background: #203a43;
+    }
+    /* أزرار المحتوى */
+    .button {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 20px;
+      width: 90%;
+      max-width: 250px;
+      font-size: 1.2em;
+      color: #fff;
+      /* تغيير خلفية الأزرار إلى متدرجة */
+      background: linear-gradient(145deg, #203a43, #2c5364);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+    .button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    /* تنسيق الأيقونات داخل الروابط */
+    .link-btn i,
+    .button i {
+      margin-left: 8px;
+      font-size: 1em;
+    }
+    /* الفوتر */
+    .footer {
+      margin-top: 20px; /* تقليل المسافة بين الفوتر والمحتوى */
+      font-size: 1em;
+      padding: 10px;
+      max-width: 90%;
+    }
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 2em;
+      transition: all 0.3s ease-in-out;
+      display: inline-block;
+      position: relative;
+      top: -10px; /* رفع الأيقونات للأعلى */
+    }
+    /* ===== القائمة الجانبية ===== */
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      right: -250px;
+      /* تغيير الخلفية إلى متدرجة جديدة */
+      background: linear-gradient(to bottom, #203a43, #2c5364);
+      overflow-y: auto;
+      transition: 0.5s;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      padding-bottom: 20px;
+      z-index: 900;
+    }
+    /* زر الإغلاق في أعلى القائمة */
+    .sidebar .close-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #FFFFFF;
+    }
+    /* رأس القائمة: عرض الشعار داخل القائمة */
+    .sidebar-header {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .sidebar-header img {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+      /* تغيير حدود الصورة إلى اللون الأساسي */
+      border: 2px solid #ff6f61;
+      padding: 5px;
+      background: #203a43;
+    }
+    /* تصميم روابط القائمة كأزرار */
+    .sidebar a.link-btn {
+      display: block;
+      margin: 10px 15px;
+      padding: 12px 10px;
+      text-decoration: none;
+      font-size: 1.2em;
+      color: #FFFFFF;
+      /* تغيير خلفية الروابط إلى لون يتماشى مع الخلفيات الجديدة */
+      background: #203a43;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar a.link-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    /* زر الفتح في الهيدر */
+    .open-btn {
+      cursor: pointer;
+    }
+    /* ===== مودال حول التطبيق ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      position: relative;
+      /* تغيير خلفية المودال إلى لون يتماشى مع الخلفيات الجديدة */
+      background: #203a43;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      /* تغيير لون العنوان في المودال إلى اللون الأساسي */
+      color: #ff6f61;
+    }
+    .modal-content p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      /* تغيير لون زر الإغلاق إلى اللون الأساسي */
+      color: #ff6f61;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <!-- الهيدر -->
+  <div class="header">
+    <i class="fas fa-bars menu-icon open-btn" onclick="openSidebar()"></i>
+    <h1>Falcon TV</h1>
+  </div>
+
+  <!-- القائمة الجانبية -->
+  <div id="sidebar" class="sidebar">
+    <!-- رأس القائمة مع الشعار -->
+    <div class="sidebar-header">
+      <img src="https://i.imgur.com/hwpf82h.png" alt="Logo">
+    </div>
+    <!-- أزرار القائمة مع الأيقونات -->
+    <a href="go:ch" class="link-btn"><i class="fas fa-play"></i> البث المباشر</a>
+    <a href="go:live" class="link-btn"><i class="fas fa-calendar-alt"></i> جدول المباريات</a>
+    <a href="go:live" class="link-btn"><i class="fa-solid fa-film"></i> الافلام والمسلسلات</a>
+    <a href="#" onclick="openInChrome('https://www.mediafire.com/file/esrq9f9ttobtplg/Falcon_Player.apk/file')" class="link-btn"><i class="fa-solid fa-play"></i> تحميل المشغل </a>
+    <a href="#" class="link-btn" onclick="showAboutModal()"><i class="fa-solid fa-address-card"></i> حول التطبيق</a>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="content">
+    <!-- صورة الشعار داخل المحتوى مع نمط الدائرة -->
+    <img src="https://i.imgur.com/hwpf82h.png" alt="Logo" class="logo">
+    <!-- أزرار المحتوى مع الأيقونات -->
+    <a href="go:ch" class="button"><i class="fas fa-play"></i> البث المباشر</a>
+    <a href="go:live" class="button"><i class="fas fa-calendar-alt"></i> جدول المباريات</a>
+    <a href="go:mo" class="button"><i class="fa-solid fa-play"></i> الاهداف والملخصات</a>
+    <a href="go:aflamcat" class="button"><i class="fa-solid fa-film"></i> الافلام والمسلسلات</a>
+  </div>
+  <!-- الفوتر -->
+  <div class="footer">
+    <a href="#" onclick="openInChrome('https://facebook.com/groups/falconconnecttv')" title="فيسبوك">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="#" onclick="openInChrome('https://t.me/yacinetvpc')" title="تليجرام">
+      <i class="fab fa-telegram"></i>
+    </a>
+  </div>
+
+  <!-- مودال حول التطبيق -->
+  <div class="modal-overlay" id="aboutModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></span>
+      <h2>Falcon TV</h2>
+      <p>افضل تطبيق لمشاهدة القنوات</p>
+      <p>في نسخته الاولى</p>
+      <p>شارك التطبيق مع اصحابك</p>
+      <p>علشان نستمر في تطويره</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function openInChrome(url) {
+      const chromeIntent = `intent://${url.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;end;`;
+      window.location.href = chromeIntent;
+      setTimeout(() => {
+        if (!document.hidden) {
+          window.location.href = url;
+        }
+      }, 500);
+    }
+    function openSidebar() {
+      document.getElementById("sidebar").style.right = "0";
+      // إضافة مستمع للنقر خارج القائمة الجانبية
+      setTimeout(() => {
+        document.addEventListener('click', outsideClickListener);
+      }, 0);
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").style.right = "-250px";
+      document.removeEventListener('click', outsideClickListener);
+    }
+    function outsideClickListener(event) {
+      const sidebar = document.getElementById("sidebar");
+      // إذا كانت القائمة مفتوحة والنقر خارجها (ولا على أيقونة القائمة) فاغلقها
+      if (sidebar.style.right === "0px" || sidebar.style.right === "0") {
+        if (!sidebar.contains(event.target) && !event.target.classList.contains('menu-icon')) {
+          closeSidebar();
+        }
+      }
+    }
+    function showAboutModal() {
+      closeSidebar(); // إخفاء القائمة الجانبية
+      document.getElementById("aboutModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("aboutModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
